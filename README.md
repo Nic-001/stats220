@@ -1,6 +1,6 @@
 > # Stats220
 
-![welcome...](https://media1.tenor.com/m/yAybfrICeNQAAAAC/hellokitty-love.gif)
+![welcome...](https://media1.tenor.com/m/-uvwtNVML80AAAAC/cat-cats.gif)
 
 # **Welcome...**
 
