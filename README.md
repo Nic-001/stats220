@@ -26,3 +26,7 @@ A meme that captures how I currently feel about my university studies is...
 **A Mysterious link...**
 
 [Mysterious Link...](https://hackertyper.com/)
+
+✧☾⁎✧˚ · .ੈ✩‧₊˚✧*:･ﾟ✧⁎☽✧
+
+[My Github Repo](https://github.com/Nic-001/stats220)
