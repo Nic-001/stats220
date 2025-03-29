@@ -59,7 +59,7 @@ Lmax <- latest_data$Late_min %>% max(na.rm = TRUE)
 
 The mean minutes of the bus early is `r Emean` mins.
 
-The minimum minuteof the bus early is `r Emin` mins.
+The minimum minute of the bus early is `r Emin` mins.
 
 The maximum minute of the bus early is `r Emax` mins.
 
