@@ -25,8 +25,7 @@ H2 {font-weight: 500;
 ## The data is tracking the arrival status of a bus.
 
 The data I tracked is the arrival status of a bus, seperated into 3 categories:
-Early, On time, and Delayed. 
-I decided to use the means, minimum and maximum of Early and Late.
+Early, On time, and Delayed. I decided to use the means, minimum and maximum of Early and Late.
 
 ```{r}
 # Makes it more convenient
