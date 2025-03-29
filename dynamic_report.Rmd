@@ -1,0 +1,107 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
+body {color: #DBB828;
+      background-color: #3C3C3C;
+      font-family: 'Kalam';
+      padding: 20px
+      }
+
+H2 {font-weight: 500;
+    color: #B4DBF7}
+
+```
+
+## The data is tracking the arrival status of a bus.
+
+The data I tracked is the arrival status of a bus, seperated into 3 categories:
+Early, On time, and Delayed. I decided to use the means, minimum and maximum of
+Early and Late.
+
+```{r}
+# Makes it more convenient
+library(tidyverse)
+
+# Just adding data in
+CSV <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSr345Q0vrXnLqhlRFBDyGyp6NIkG_HeEXcrBqEpToIjAtNqSbZ7ArFDt5XSRGpgIJTjgxVISvh9QeV/pub?output=csv"
+
+logged_data <- read_csv(CSV) %>%
+  rename(Early_min = 5,
+         On_time_min = 8,
+         Late_min = 6,
+         Status = 4)
+
+latest_data <- logged_data %>%
+  select(Early_min, On_time_min, Late_min, Status)
+
+# For pasting
+Emean <- latest_data$Early_min %>% mean(na.rm = TRUE)
+Emin <- latest_data$Early_min %>% min(na.rm = TRUE)
+Emax <- latest_data$Early_min %>% max(na.rm = TRUE)
+
+Lmean <- latest_data$Late_min %>% mean(na.rm = TRUE) %>% round(0)
+Lmin <- latest_data$Late_min %>% min(na.rm = TRUE)
+Lmax <- latest_data$Late_min %>% max(na.rm = TRUE)
+
+```
+
+## Early
+
+The mean minutes of the bus early is `r Emean` mins.
+
+The minimum minuteof the bus early is `r Emin` mins.
+
+The maximum minute of the bus early is `r Emax` mins.
+
+## Late
+
+The mean of the minutes of the bus delayed is `r Lmean` mins.
+
+The minimum minute of the bus delayed is `r Lmin` mins.
+
+The maximum minute of the bus delayed is `r Lmax` mins.
+
+## Bar Charts
+
+## Late Frequency Bar Chart
+
+```{r}
+ggplot(data = latest_data) +
+  geom_bar(aes(x = Late_min, fill = Status)) +
+  labs(title = "How late can a bus get?",
+       subtitle = "Seeing the numbers of how late a bus is",
+       caption = "Source: me",
+       x = "Minutes",
+       y = "Number of times")
+
+```
+
+On this first bar chart, it analyses the frequency of delays, and which minute
+is more frequent. 2 and 4 minutes seem to be the most frequent when the bus is delayed.
+
+## Status Bar Chart
+
+```{r}
+ggplot(data = latest_data) +
+  geom_bar(aes(x = Status, fill = Status)) +
+  labs(title = "Which status is the more common?",
+       subtitle = "Comparison of Early, On time, and Delayed",
+       caption = "Source: me",
+       x = "Status",
+       y = "Number of times")
+
+```
+
+On this second bar chart, it analyses which arrival status of a bus is more
+common. In my observations, Delay and On time seems to be equal. The bus doesnt
+seem to come early that often. But then again, this is just a small sample.
