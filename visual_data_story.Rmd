@@ -1,0 +1,78 @@
+--- 
+title: "Comparisons of Buses: Time, Status, Type."
+output: html_document
+---
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{js}
+$(function() {
+  $(".level2").css('visibility', 'hidden');
+  $(".level2").first().css('visibility', 'visible');
+  $(".container-fluid").height($(".container-fluid").height() + 300);
+  $(window).on('scroll', function() {
+    $('h2').each(function() {
+      var h2Top = $(this).offset().top - $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (h2Top >= 0 && h2Top <= windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'visible');
+      } else if (h2Top > windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'hidden');
+      }
+    });
+  });
+})
+```
+
+```{css}
+.figcaption {display: none}
+
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
+body {color: #8856a7;
+      background-color: #e0ecf4;
+      font-family: 'Kalam';
+      padding: 20px
+      }
+
+H2 {font-weight: 500;
+    color: #9ebcda}
+```
+
+## Plot 1 - Comparing lateness of Frequent and Local buses.
+
+![Local buses seem to be more late than Frequent buses](plot1.png)
+
+For Plot 1, I decided to compare local and frequent buses and how often they are
+late. The bus type was a new addition, because I didn't specify it before. Shown
+in the plot, local buses always seems to be more late compared to the frequent 
+buses, although not by a significant amount. But then again, it was only a sample
+of 20 total, 10 each for the bus type, so more data could produce a better conclusion.
+
+
+## Plot 2 - Comparing mean minutes of early and delayed
+
+![Delayed buses seem to have higher variability](plot2.png)
+For Plot 2, I wanted to know if there was a difference when it came to how many
+minutes a bus is delayed or early by - if they were any different. It seems that
+delayed buses have a much higher variation than early buses, but the means are
+very close to each other. I think delayed buses have more variation because it 
+happens more often than early, with factors like traffic.
+
+## Plot 3 - comparing on time and delayed buses with time logged
+
+![On time seems to happen more often compared to delayed](plot3.png)
+
+
+For Plot 3, I decided to see which status happened more during the time I Logged
+these observations. As shown on the graph, on time happens more often than delayed
+buses - during the time I logged them in anyway. This is only data from local
+and frequent buses, so the sample is small. I would guess the delayed mostly came
+from local buses. I logged most of this data when it was morning or afternoon.
+
+
+
